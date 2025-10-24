@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jason & Sarah - Boda</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    
+    .collage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 10s ease-in-out, opacity 10s ease-in-out;
+    }
+
+    /* Movimiento suave */
+    .collage img:nth-child(1) { animation: move1 25s infinite alternate ease-in-out; }
+    .collage img:nth-child(2) { animation: move2 25s infinite alternate ease-in-out; }
+    .collage img:nth-child(3) { animation: move3 25s infinite alternate ease-in-out; }
+    .collage img:nth-child(4) { animation: move4 25s infinite alternate ease-in-out; }
+
+    @keyframes move1 {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1) translate(-10px, -10px); }
+    }
+    @keyframes move2 {
+      0% { transform: scale(1.1); }
+      100% { transform: scale(1) translate(10px, -10px); }
+    }
+    @keyframes move3 {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1) translate(-10px, 10px); }
+    }
+    @keyframes move4 {
+      0% { transform: scale(1.1); }
+      100% { transform: scale(1) translate(10px, 10px); }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #e86c85;
+      color: white;
+      padding: 10px 15px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .menu-icon {
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bar {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(232, 108, 133, 0.95);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      font-size: 18px;
+      transition: left 0.4s ease;
+      z-index: 9;
+    }
+
+    nav.active {
+      left: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffe0e6;
+    }
+
+    .menu-icon.active .bar:nth-child(1) {
+      transform: rotate(45deg) translateY(9px);
+    }
+    .menu-icon.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-icon.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translateY(-9px);
+    }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 5;
+    }
+
+    .blur-box {
+      background-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 500px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      color: #e86c85;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .date {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #777;
+    }
+
+    .divider {
+      width: 60%;
+      height: 1px;
+      background-color: #e86c85;
+      margin: 20px auto;
+      opacity: 0.3;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      background-color: transparent;
+      border: 2px solid #e86c85;
+      color: #e86c85;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    button:hover {
+      background-color: #e86c85;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(232, 108, 133, 0.4); }
+      70% { box-shadow: 0 0 0 20px rgba(232, 108, 133, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(232, 108, 133, 0); }
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.3em; }
+      .blur-box { padding: 25px; }
+      button { padding: 10px 25px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2em; }
+      header { font-size: 12px; }
+      nav { width: 200px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="collage">
+  <img src="img/voli.jpeg" alt="volibol">
+  <img src="img/enfermeria.jpg" alt="Corazon">
+  <img src="img/toluca.jpg" alt="tolucaxd">
+  <img src="img/jjk.webp" alt="EXPANSION">
+    </div>
+
+  <header>
+    <div class="menu-icon" id="menuIcon">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span>XD</span>
+  </header>
+
+  <nav id="sideMenu">
+    <a href="/carta.html">Picale aquí</a>
+    <a href="/flor.html">Para ti</a>
+
+  </nav>
+
+  <main>
+    <div class="blur-box">
+      <h1>CARMEN</h1>
+      <p>Te quiero muchooo</p>
+      <div class="divider"></div>
+      <p class="date">MUCHO MUCHO MUCHO MUCHO MUCHO MUCHO</p>
+      <p class="date">dale al menú :v</p>
+    </div>
+  </main>
+
+  <script>
+    function celebrate() {
+      const button = document.querySelector("button");
+      button.innerText = "¡Gracias! 💕";
+      button.style.backgroundColor = "#e86c85";
+      button.style.color = "#fff";
+      button.style.boxShadow = "0 0 15px rgba(232, 108, 133, 0.6)";
+      setTimeout(() => {
+        alert("Nos alegra que quieras celebrar con nosotros 💖");
+      }, 700);
+    }
+
+    const menuIcon = document.getElementById("menuIcon");
+    const sideMenu = document.getElementById("sideMenu");
+
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.toggle("active");
+      sideMenu.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

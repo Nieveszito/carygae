@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="collage">
+  <img src="img/voli.jpeg" alt="volibol">
+  <img src="img/enfermeria.jpg" alt="Corazon">
+  <img src="img/toluca.jpg" alt="tolucaxd">
+  <img src="img/jjk.webp" alt="EXPANSION">
+    </div>
+
+  <header>
+    <div class="menu-icon" id="menuIcon">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span>Te quiero</span>
+  </header>
+
+  <nav id="sideMenu">
+    <a href="index.html">Volver al inicio 🏡</a>
+    <a href="flor.html">Para ti</a>
+  </nav>
+
+  <main>
+    <div class="blur-box">
+      <h1>TE QUIERO MUCHO</h1>
+      <p>
+        Quiero decirte que estos días que he pasado contigo han sido muy especialespara mí.
+        Desde que te conocí eres la raazón por la que sonrío todos los días.
+      </p>
+      <p>
+        Gracias por elegirme, me atraes mucho y quiero que seas muy feliz.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    const menuIcon = document.getElementById("menuIcon");
+    const sideMenu = document.getElementById("sideMenu");
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.toggle("active");
+      sideMenu.classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>

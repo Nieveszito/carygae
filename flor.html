@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti 🌷</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 💖 Animaciones especiales solo para esta página */
+
+    /* Flor que flota lentamente */
+    .flower {
+      width: 150px;
+      margin-top: 20px;
+      animation: float 4s ease-in-out infinite alternate;
+      filter: drop-shadow(0 5px 10px rgba(232, 108, 133, 0.3));
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Corazón que late lentamente */
+    .heart {
+      font-size: 2.5em;
+      color: #e86c85;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.2); }
+      50% { transform: scale(0.9); }
+      75% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="collage">
+  <img src="img/voli.jpeg" alt="volibol">
+  <img src="img/enfermeria.jpg" alt="Corazon">
+  <img src="img/toluca.jpg" alt="tolucaxd">
+  <img src="img/jjk.webp" alt="EXPANSION">
+    </div>
+
+  <!-- Encabezado -->
+  <header>
+    <div class="menu-icon" id="menuIcon">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <span>Para ti 💖</span>
+  </header>
+
+  <!-- Menú lateral -->
+  <nav id="sideMenu">
+    <a href="index.html">Volver al inicio 🏡</a>
+    <a href="carta.html">Picale aqui</a>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main>
+    <div class="blur-box">
+      <div class="heart">💗</div>
+      <h1>Para ti</h1>
+      <p>Una flor</p>
+      <img class="flower" src="./img/flor.png" alt="Flor">
+    </div>
+  </main>
+
+  <!-- Script menú -->
+  <script>
+    const menuIcon = document.getElementById("menuIcon");
+    const sideMenu = document.getElementById("sideMenu");
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.toggle("active");
+      sideMenu.classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
