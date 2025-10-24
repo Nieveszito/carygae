@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Car</title>
-
-
+  <title>Para Carmen</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -21,9 +19,11 @@
       text-align: center;
       min-height: 100vh;
       overflow-x: hidden;
+      display: flex;
+      justify-content: center; /* Centrado horizontal */
+      align-items: center; /* Centrado vertical */
     }
 
-    
     .collage {
       position: fixed;
       top: 0;
@@ -125,6 +125,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -141,12 +142,13 @@
       transform: rotate(-45deg) translateY(-9px);
     }
 
-    main {
-      min-height: 100vh;
+    /* CONTENEDOR PRINCIPAL - CENTRADO PERFECTO */
+    #content-container {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
+      width: 100%;
       padding: 20px;
       z-index: 5;
     }
@@ -160,6 +162,7 @@
       max-width: 90%;
       width: 500px;
       animation: fadeIn 2s ease-in-out;
+      margin: 0 auto; /* Centrado adicional */
     }
 
     h1 {
@@ -172,6 +175,8 @@
     p {
       font-size: 1.1em;
       color: #444;
+      margin-bottom: 15px;
+      line-height: 1.6;
     }
 
     .date {
@@ -207,6 +212,46 @@
       transform: scale(1.05);
     }
 
+    /* Estilos para la página de la flor */
+    .flower {
+      width: 150px;
+      margin-top: 20px;
+      animation: float 4s ease-in-out infinite alternate;
+      filter: drop-shadow(0 5px 10px rgba(232, 108, 133, 0.3));
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+      100% { transform: translateY(0); }
+    }
+
+    .heart {
+      font-size: 2.5em;
+      color: #e86c85;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.2); }
+      50% { transform: scale(0.9); }
+      75% { transform: scale(1.1); }
+    }
+
+    /* Ocultar páginas no activas */
+    .page {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .page.active {
+      display: block;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -235,11 +280,11 @@
 
 <body>
   <div class="collage">
-  <img src="img/voli.jpeg" alt="volibol">
-  <img src="img/enfermeria.jpg" alt="Corazon">
-  <img src="img/toluca.jpg" alt="tolucaxd">
-  <img src="img/jjk.webp" alt="EXPANSION">
-    </div>
+    <img src="img/voli.jpeg" alt="volibol">
+    <img src="img/enfermeria.jpg" alt="Corazon">
+    <img src="img/toluca.jpg" alt="tolucaxd">
+    <img src="img/jjk.webp" alt="EXPANSION">
+  </div>
 
   <header>
     <div class="menu-icon" id="menuIcon">
@@ -247,44 +292,99 @@
       <div class="bar"></div>
       <div class="bar"></div>
     </div>
-    <span>XD</span>
+    <span id="headerTitle">XD</span>
   </header>
 
   <nav id="sideMenu">
-    <a href="./carta.html">Picale aquí</a>
-    <a href="./flor.html">Para ti</a>
-
+    <a onclick="showPage('inicio')">Inicio 🏡</a>
+    <a onclick="showPage('carta')">Picale aquí</a>
+    <a onclick="showPage('flor')">Para ti</a>
   </nav>
 
-  <main>
-    <div class="blur-box">
-      <h1>CARMEN</h1>
-      <p>Te quiero muchooo</p>
-      <div class="divider"></div>
-      <p class="date">MUCHO MUCHO MUCHO MUCHO MUCHO MUCHO</p>
-      <p class="date">dale al menú :v</p>
+  <!-- CONTENEDOR PRINCIPAL CENTRADO -->
+  <div id="content-container">
+    
+    <!-- Página de INICIO -->
+    <div id="inicio" class="page active">
+      <div class="blur-box">
+        <h1>CARMEN</h1>
+        <p>Te quiero muchooo</p>
+        <div class="divider"></div>
+        <p class="date">MUCHO MUCHO MUCHO MUCHO MUCHO MUCHO</p>
+        <p class="date">dale al menú :v</p>
+      </div>
     </div>
-  </main>
+
+    <!-- Página de CARTA -->
+    <div id="carta" class="page">
+      <div class="blur-box">
+        <h1>TE QUIERO MUCHO</h1>
+        <p>
+          Quiero decirte que estos días que he pasado contigo han sido muy especiales para mí.
+          Desde que te conocí eres la razón por la que sonrío todos los días.
+        </p>
+        <p>
+          Gracias por elegirme, me atraes mucho y quiero que seas muy feliz.
+        </p>
+      </div>
+    </div>
+
+    <!-- Página de FLOR -->
+    <div id="flor" class="page">
+      <div class="blur-box">
+        <div class="heart">💗</div>
+        <h1>Para ti</h1>
+        <p>Una flor</p>
+        <img class="flower" src="img/flor.png" alt="Flor">
+      </div>
+    </div>
+
+  </div>
 
   <script>
-    function celebrate() {
-      const button = document.querySelector("button");
-      button.innerText = "¡Gracias! 💕";
-      button.style.backgroundColor = "#e86c85";
-      button.style.color = "#fff";
-      button.style.boxShadow = "0 0 15px rgba(232, 108, 133, 0.6)";
-      setTimeout(() => {
-        alert("Nos alegra que quieras celebrar con nosotros 💖");
-      }, 700);
-    }
-
     const menuIcon = document.getElementById("menuIcon");
     const sideMenu = document.getElementById("sideMenu");
+    const headerTitle = document.getElementById("headerTitle");
 
     menuIcon.addEventListener("click", () => {
       menuIcon.classList.toggle("active");
       sideMenu.classList.toggle("active");
     });
+
+    function showPage(pageId) {
+      // Ocultar todas las páginas
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Mostrar la página seleccionada
+      document.getElementById(pageId).classList.add('active');
+      
+      // Cambiar título del header
+      const titles = {
+        'inicio': 'XD',
+        'carta': 'Te quiero',
+        'flor': 'Para ti 💖'
+      };
+      headerTitle.textContent = titles[pageId];
+      
+      // Cerrar menú
+      menuIcon.classList.remove('active');
+      sideMenu.classList.remove('active');
+    }
+
+    function celebrate() {
+      const button = document.querySelector("button");
+      if (button) {
+        button.innerText = "¡Gracias! 💕";
+        button.style.backgroundColor = "#e86c85";
+        button.style.color = "#fff";
+        button.style.boxShadow = "0 0 15px rgba(232, 108, 133, 0.6)";
+        setTimeout(() => {
+          alert("Nos alegra que quieras celebrar con nosotros 💖");
+        }, 700);
+      }
+    }
   </script>
 </body>
 </html>
